@@ -1,0 +1,11 @@
+after building the .py class from .ui file replace the class object with an inheritance of QtWidgets.QMainWindow.
+Turn all QMainWindow object to self and run main as:
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    window = MyMainWindow()
+    window.show()
+    sys.exit(app.exec_())
+
+where MyMainWindows() is the name of the previously mentioned class
