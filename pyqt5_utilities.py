@@ -19,6 +19,18 @@ def browse(parent=None, caption='Select .csv file', directory='', filter='Csv Fi
             return
         parent.line_edit.setText(file_name)
 
+def browse_2(parent=None, caption='Select .csv file', directory='', filter='Csv Files (*.csv)'):
+    file_name, _ = QFileDialog.getOpenFileName(
+        parent=parent, caption=caption, directory=directory, filter=filter)
+    if file_name:
+        #  assert file is .csv
+        if not file_name.endswith('.csv'):
+            print('file does not end with .csv')
+            QMessageBox.critical(parent.centralwidget, 'Invalid File', 'Please select a .csv file.')
+            return
+        label_text = file_name[file_name.rindex('/')+1:]
+        parent.browse_label.setText(label_text)
+
 
 def convert(self):
     ui_file = self.ui_path_edit.text().strip()
