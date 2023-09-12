@@ -16,6 +16,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.setObjectName("MainWindow")
+        self.classification = True
         self.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
@@ -42,13 +43,21 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.setWindowTitle(_translate("MainWindow", "Neural Net Elaborator"))
         self.browse_button.setText(_translate("MainWindow", "Browse"))
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
+#     import sys
+#     app = QtWidgets.QApplication(sys.argv)
+#     window = Ui_MainWindow()
+#     window.show()
+#     sys.exit(app.exec_())
+
+def run_app():
     import sys
     app = QtWidgets.QApplication(sys.argv)
     window = Ui_MainWindow()
     window.show()
     sys.exit(app.exec_())
+
