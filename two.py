@@ -16,7 +16,12 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.setObjectName("MainWindow")
+        self.csv_data = None
         self.classification = True
+        self.hidden_shape = None
+        self.n_epochs = None
+        self.save_location = None
+        self.feature_indices, self.target_index = None, None
         self.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
@@ -60,4 +65,8 @@ def run_app():
     window = Ui_MainWindow()
     window.show()
     sys.exit(app.exec_())
+
+    # data = np.arange(10)
+    # with open(save_path, 'w') as file:
+    #     json.dump(data.tolist(), file)
 

@@ -13,10 +13,10 @@ def one_hot(y):  # works only with label encoded data
     return Y
 
 
-data = pd.read_csv('data/iris.csv')
-X_, y_, = data.iloc[:, 0:-1].to_numpy(), data.iloc[:, -1].to_numpy()
-y_ = LabelEncoder().fit_transform(y_)
-Y_ = one_hot(y_)
+# data = pd.read_csv('data/iris.csv')
+# X_, y_, = data.iloc[:, 0:-1].to_numpy(), data.iloc[:, -1].to_numpy()
+# y_ = LabelEncoder().fit_transform(y_)
+# Y_ = one_hot(y_)
 
 
 def build_nn_classifier(nn_shape: np.array, in_shape, out_shape, alpha=1/1_000):
@@ -51,318 +51,26 @@ def build_nn_regressor(nn_shape: np.array, in_shape, alpha=1/1_000):
     return model
 
 
-X_train, X_test, y_train, y_test = train_test_split(
-    X_, Y_, train_size=1/2, shuffle=True
-)
-nn_shape_ = np.array([16, 16, 32, 32])
-m = build_nn_classifier(
-    nn_shape_, in_shape=X_.shape[1], out_shape=Y_.shape[1]
-)
+# X_train, X_test, y_train, y_test = train_test_split(
+#     X_, Y_, train_size=1/2, shuffle=True
+# )
+# nn_shape_ = np.array([16, 16, 32, 32])
+# m = build_nn_classifier(
+#     nn_shape_, in_shape=X_.shape[1], out_shape=Y_.shape[1]
+# )
 # print(m.summary())
-# m.fit(X_train, y_train, epochs=200)
+# n_arr = np.array(['a' for _ in range(y_train.shape[0])])
+# n_mat = np.hstack([n_arr for _ in range(y_train.shape[1])])
+# history = m.fit(X_train, y_train, epochs=200)
+# print(history.history['loss'][-1])
 
 
+# TO BE USED IN THE PROGRESS BAR
+class TrainingProgressCallback(keras.callbacks.Callback):
 
+    def __init__(self, signal):
+        super().__init__()
+        self.signal = signal
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def on_epoch_begin(self, epoch, logs=None):
+        self.signal(epoch)
