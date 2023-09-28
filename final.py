@@ -53,7 +53,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.setWindowTitle(_translate("MainWindow", "Neural Net Elaborator"))
         self.browse_button.setText(_translate("MainWindow", "Browse"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p>This application lets the user pick up some .csv file <br/>and use the data inside to build a custom deep neural network <br/>using \'relu\' activation function, the size and shape <br/>of the hidden layers can be completely customized,<br/>the model is built in Tensorflow 2 + keras and it\'s a keras.Model object. </p><p>To load the model use \'keras.models.load_model(filepath=)\' method.</p></body></html>"))
 
