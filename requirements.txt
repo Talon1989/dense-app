@@ -2,3 +2,4 @@ PyQt5
 numpy
 tensorflow
 pandas
+scikit-learn
