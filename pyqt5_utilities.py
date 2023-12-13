@@ -179,8 +179,11 @@ def save_model(parent):
             options=options,
         )
         if fileName:
-            print(ext)
             parent.save_location = fileName
+            # required for linux user
+            if not parent.save_location.endswith(".h5"):
+                filename, ext = os.path.splitext(parent.save_location)
+                parent.save_location = filename + ".h5"
             model = run_nn(parent)
             if model:
                 model.save(parent.save_location)
